@@ -12,3 +12,9 @@ services:
       - 8000:8000
     depends_on: 
       - db
+  frontend:
+    build: ./frontend
+    volumes: 
+      - ./frontend:/app
+    ports:
+      - 3000:3000

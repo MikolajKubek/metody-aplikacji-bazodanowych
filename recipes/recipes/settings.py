@@ -25,13 +25,14 @@ SECRET_KEY = '*292l(2!&!@gfd5uc#p8u!+#f9m961)e^74a)r2*h74jpv6e6+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'rest_framework',
+    'corsheaders',
     'cookbook.apps.CookbookConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,7 +47,13 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

@@ -1,11 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import User, Ingredient, Recipe, Comment
+from .models import User, Ingredient, Recipe, Comment, RecipeIngredientAssociative
 from rest_framework import viewsets
-from .serializers import UserSerializer, IngredientSerializer, RecipeSerializer, CommentSerializer
+from .serializers import UserSerializer, IngredientSerializer, RecipeSerializer, CommentSerializer, RecipeIngredientAssociativeSerializer
 
 def index(request):
     return HttpResponse("siema")
+
+class RecipeIngredientAssociativeViewSet(viewsets.ModelViewSet):
+    queryset = RecipeIngredientAssociative.objects.all()
+    serializer_class = RecipeIngredientAssociativeSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
